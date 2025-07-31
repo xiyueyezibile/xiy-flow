@@ -1,27 +1,26 @@
-import { addEdge, Background, BackgroundVariant, type Connection, Controls, Handle, MiniMap,type OnConnect, Position, ReactFlow, useEdgesState, useNodesState } from '@xyflow/react';
+import { addEdge, Background, BackgroundVariant, Controls, MiniMap, ReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { initialEdges, initialNodes, nodeTypes } from './nodes';
- 
-
- 
-
+import { nodeTypes } from './nodes';
+import FlowOverlays from './components/FlowOverlays';
+import { useFlowStore } from './stores/flowStore';
 
 
 export default function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
- 
-  const onConnect = (params: Connection) => {
-    setEdges((eds) => addEdge(params, eds))
-  }
+  const nodes = useFlowStore(state => state.nodes);
+  const edges = useFlowStore(state => state.edges);
+  const setNodes = useFlowStore(state => state.setNodes);
+  const setEdges = useFlowStore(state => state.setEdges);
+
+  const onConnect = (params) => {
+    setEdges(edges => addEdge(params, edges));
+  };
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow 
         nodes={nodes}
         edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
+        onEdgesChange={setEdges}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
       >
@@ -29,6 +28,7 @@ export default function App() {
         <MiniMap zoomable/>
         <Background variant={BackgroundVariant.Lines}/>
       </ReactFlow>
+      <FlowOverlays />
     </div>
   );
 }
