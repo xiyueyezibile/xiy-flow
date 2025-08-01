@@ -6,7 +6,7 @@
 
 - 项目名称：模板视频生成器
 - 项目描述：通过 React-flow 实现流程图，并将流程图转换为模板视频；
-- 项目技术：React、React-flow、antd、zustand
+- 项目技术：React、React-flow、antd、zustand、tailwindcss
 
 ### 功能介绍
 

@@ -3,7 +3,7 @@ import '@xyflow/react/dist/style.css';
 import { nodeTypes } from './nodes';
 import FlowOverlays from './components/FlowOverlays';
 import { useFlowStore } from './stores/flowStore';
-
+import './App.css';
 
 export default function App() {
   const nodes = useFlowStore(state => state.nodes);
@@ -16,7 +16,7 @@ export default function App() {
   };
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div className="w-[100vw] h-[100vh]">
       <ReactFlow 
         nodes={nodes}
         edges={edges}

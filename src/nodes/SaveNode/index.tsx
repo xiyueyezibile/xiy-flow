@@ -6,7 +6,7 @@ interface NodePorps {
   }
 }
 export function SaveNode({ data }: NodePorps) {
-  return <div style={{background: 'red', width: '100px', height: '100px', textAlign: 'center'}}>
+  return <div className="bg-red-500 w-[100px] h-[100px] text-center">
     <Handle type="source" position={Position.Right} />
     <Handle type="target" position={Position.Bottom} />
 

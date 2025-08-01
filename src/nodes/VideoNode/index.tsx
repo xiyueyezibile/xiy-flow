@@ -57,29 +57,28 @@ export function VideoNode({ data }: NodePorps) {
     }
   };
 
-  return <div style={{ width: '200px', height: '240px', border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#f5f5f5' }}>
+  return <div className="w-[200px] h-[240px] border border-gray-300 rounded-lg overflow-hidden bg-gray-100">
     <Handle type="source" position={Position.Right} />
     <Handle type="target" position={Position.Bottom} />
 
     {!videoFile ? (
       <button 
         onClick={handleUploadClick}
-        style={{ width: '100%', height: '100%', backgroundColor: '#e0e0e0', border: 'none', cursor: 'pointer', fontSize: '14px' }}
+        className="w-full h-full bg-gray-200 border-0 cursor-pointer text-sm"
       >
         上传视频
       </button>
     ) : (
-      <>{
-        coverUrl && (
+      <>{coverUrl && (
           <img 
             src={coverUrl} 
             alt="Video Cover" 
-            style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+            className="w-full h-[200px] object-cover"
           />
         )}
-        <div style={{ padding: '8px', textAlign: 'center', fontSize: '12px', color: '#666' }}>
+        <div className="p-2 text-center text-xs text-gray-600">
           {duration}
-          <div style={{ marginTop: '8px', width: '80%', margin: '0 auto' }}>
+          <div className="mt-2 w-[80%] mx-auto">
             <Slider
               value={volume}
               onChange={handleVolumeChange}
@@ -92,7 +91,7 @@ export function VideoNode({ data }: NodePorps) {
       </>
     )}
 
-    <video ref={videoRef} style={{ display: 'none' }} />
-    <canvas ref={canvasRef} style={{ display: 'none' }} />
+    <video ref={videoRef} className="hidden" />
+    <canvas ref={canvasRef} className="hidden" />
   </div>
 }

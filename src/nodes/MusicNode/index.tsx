@@ -54,30 +54,30 @@ export function MusicNode({ data, id }: NodeProps) {
   }, [data.volume]);
 
   return (
-    <div style={{ width: '200px', height: '160px', border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#f5f5f5' }}>
+    <div className="w-[200px] h-[160px] border border-gray-300 rounded-lg overflow-hidden bg-gray-100">
       <Handle type="source" position={Position.Right} />
       <Handle type="target" position={Position.Bottom} />
 
       {!audioFile ? (
         <Button 
           onClick={handleUploadClick}
-          style={{ width: '100%', height: '100%' }}
+          className="w-full h-full"
         >
           上传音频/视频
         </Button>
       ) : (
-        <div style={{ padding: '12px', textAlign: 'center' }}>
-          <div style={{ width: '100%', height: '80px', backgroundColor: '#e8e8e8', borderRadius: '4px', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: '24px' }}>🎵</span>
+        <div className="p-3 text-center">
+          <div className="w-full h-[80px] bg-gray-200 rounded-md mb-2 flex items-center justify-center">
+            <span className="text-2xl">🎵</span>
           </div>
-          <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>{duration}</div>
-          <Button onClick={handleOpenVolumeModal} size="small" style={{ width: '80%' }}>
+          <div className="text-xs text-gray-600 mb-2">{duration}</div>
+          <Button onClick={handleOpenVolumeModal} size="small" className="w-[80%]">
             调整音量
           </Button>
         </div>
       )}
 
-      <audio ref={audioRef} style={{ display: 'none' }} />
+      <audio ref={audioRef} className="hidden" />
     </div>
   );
 }
